@@ -6,6 +6,18 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-google-fonts-v2`,
+      options: {
+        fonts: [
+          {
+            family: 'Montserrat',
+            variable: true,
+            weights: ['200..900']
+          }
+        ]
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

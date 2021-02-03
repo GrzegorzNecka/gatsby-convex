@@ -15,6 +15,7 @@ const NavigationWrapper = styled.nav`
   a {
     text-decoration: none;
     color: inherit;
+    font-family: 'Montserrat';
   }
 `
 
