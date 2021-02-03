@@ -1,0 +1,40 @@
+import { createGlobalStyle } from "styled-components"
+import "fontsource-montserrat"
+//https://www.gatsbyjs.com/docs/how-to/styling/using-web-fonts/
+const GlobalStyle = createGlobalStyle`
+ 
+
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+    padding: 80px 65px 0;
+    font-family: 'Montserrat'; 
+  }
+
+  button {
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Montserrat'; 
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+`
+
+export default GlobalStyle
