@@ -29,7 +29,7 @@ const NavList = styled.ul`
   padding: 0;
   list-style: none;
   display: flex;
-  font-weight: ${({ theme }) => theme.fontWeight.light};
+  font-weight: ${({ theme }) => theme.fontWeight.medium};
 `
 
 const NavListItem = styled.li`
@@ -42,7 +42,7 @@ const Logo = styled.span`
 `
 
 const Image = styled.img`
-  width: 12rem;
+  width: 15rem;
 `
 
 const Navigation = () => (

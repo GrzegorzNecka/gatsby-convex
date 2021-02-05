@@ -47,7 +47,7 @@ const FrontImage = styled.img`
 const Footer = styled.footer`
   width: 50%;
   height: 4rem;
-  padding: 0 0 0 6.5rem;
+  padding: 0;
 
   ul {
     display: flex;
