@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    padding: 80px 65px 0;
+    padding: 8rem 6.5rem 0;
     font-family: 'Montserrat';
    
   }

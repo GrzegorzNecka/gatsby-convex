@@ -4,12 +4,18 @@ import { Link } from "gatsby"
 import convexLogo from "./../../assets/icons/convex-logo.svg"
 import styled from "styled-components"
 
-const NavigationWrapper = styled.nav`
-  background: red;
-
+const NavWrapper = styled.nav`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8rem;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  /* justify-content: flex-start;
+  width:100%; */
+  justify-content: space-between;
+  width: 50%;
+  padding: 0 0 0 6.5rem;
 
   a {
     text-decoration: none;
@@ -18,49 +24,49 @@ const NavigationWrapper = styled.nav`
   }
 `
 
-const NavigationList = styled.ul`
+const NavList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
+  font-weight: ${({ theme }) => theme.fontWeight.light};
 `
 
-const NavigationListItem = styled.li`
-  font-weight: 600;
+const NavListItem = styled.li`
   font-size: 15px;
   margin-left: 32px;
 `
 
 const Logo = styled.span`
-  width: 100px;
+  width: 10rem;
 `
 
 const Image = styled.img`
-  width: 6rem;
+  width: 12rem;
 `
 
 const Navigation = () => (
-  <NavigationWrapper>
+  <NavWrapper>
     <Logo>
       <Link to="/">
         <Image src={convexLogo} alt="" />
       </Link>
     </Logo>
-    <NavigationList>
-      <NavigationListItem>
+    <NavList>
+      <NavListItem>
         <Link to="/">strona główna</Link>
-      </NavigationListItem>
-      <NavigationListItem>
+      </NavListItem>
+      <NavListItem>
         <Link to="/o-nas">o nas</Link>
-      </NavigationListItem>
-      <NavigationListItem>
+      </NavListItem>
+      <NavListItem>
         <Link to="/oferta">ofert</Link>
-      </NavigationListItem>
-      <NavigationListItem>
+      </NavListItem>
+      <NavListItem>
         <Link to="/kontakt">kontakt</Link>
-      </NavigationListItem>
-    </NavigationList>
-  </NavigationWrapper>
+      </NavListItem>
+    </NavList>
+  </NavWrapper>
 )
 
 export default Navigation
