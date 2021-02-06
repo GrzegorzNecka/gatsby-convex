@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Button from "../components/Button/Button"
 import envelopeIcon from "./../assets/icons/envelope-icon.svg"
@@ -34,12 +35,12 @@ const Header = styled.header`
   }
 `
 
-const FrontImage = styled.img`
-  position: absolute;
+const FrontImage = styled(Img)`
+  position: absolute !important;
   top: 0;
   right: 0;
   width: 50%;
-  /* object-fit: cover; */
+  object-fit: cover; /* to rozpierdala content - lepiej dać to w background image */
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0 100%);
   height: 100vh;
 `
@@ -76,30 +77,24 @@ const Footer = styled.footer`
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="CONVEX" />
+    <SEO title={data.site.siteMetadata.name} />
     <Header>
-      <h1>Producent opakowań kartonowych</h1>
-      <p>
-        CONVEX producentem opakowań kartonowych, na terenie Krakowa. Działamy
-        nieprzerwanie od 1995 roku
-      </p>
+      <h1>{data.site.siteMetadata.title}</h1>
+      <p>{data.site.siteMetadata.description}</p>
       <Button>SPRAWDŹ NASZĄ OFERTĘ</Button>
     </Header>
-    <FrontImage
-      src={data.file.childImageSharp.fluid.src}
-      sizes={data.file.childImageSharp.fluid.sizes}
-      srcSet={data.file.childImageSharp.fluid.srcSet}
-      alt=""
-    ></FrontImage>
+    <FrontImage fluid={data.file.childImageSharp.fluid}></FrontImage>
     <Footer>
       <ul>
         <li>
           <img src={envelopeIcon} alt="" />
-          <a href="mailto:biuro@convex.com.pl">biuro@convex.com.pl</a>
+          <a href={`mailto:${data.site.siteMetadata.mail}`}>
+            {data.site.siteMetadata.mail}
+          </a>
         </li>
         <li>
           <img src={phoneIcon} alt="" />
-          <span>505-099-655 </span>
+          <span>{data.site.siteMetadata.phone}</span>
         </li>
       </ul>
     </Footer>
@@ -108,12 +103,19 @@ const IndexPage = ({ data }) => (
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        title
+        description
+        phone
+        mail
+        name
+      }
+    }
     file(name: { eq: "front-image" }) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          src
-          srcSet
-          sizes
+        fluid(maxWidth: 800, quality: 90) {
+          ...GatsbyImageSharpFluid_noBase64
         }
       }
     }

@@ -1,8 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `CONVEX producentem opakowań kartonowych`,
+    name: `CONVEX`,
+    title: `Producent opakowań kartonowych`,
     description: `CONVEX producentem opakowań kartonowych, na terenie Krakowa. Działamy nieprzerwanie od 1995 roku
     `,
+    mail: `biuro@convex.com.pl`,
+    phone: `505-099-655`,
     author: `Paweł Słowik`,
   },
   plugins: [
@@ -12,12 +15,12 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: 'Montserrat',
+            family: "Montserrat",
             variable: true,
-            weights: ['200..900']
-          }
-        ]
-      }
+            weights: ["200..900"],
+          },
+        ],
+      },
     },
     `gatsby-plugin-react-helmet`,
     {
@@ -45,10 +48,10 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/icons/logo-cart.png`, // This path is relative to the root of the site.
       },
     },
-  
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
