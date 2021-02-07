@@ -40,7 +40,7 @@ const FrontImage = styled(Img)`
   top: 0;
   right: 0;
   width: 50%;
-  object-fit: cover; /* to rozpierdala content - lepiej dać to w background image */
+  object-fit: cover;
   clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0 100%);
   height: 100vh;
 `
@@ -86,7 +86,7 @@ const IndexPage = ({ data }) => (
     <FrontImage fluid={data.file.childImageSharp.fluid}></FrontImage>
     <Footer>
       <ul>
-        <li>
+        <li className={"bg-yellow-400"}>
           <img src={envelopeIcon} alt="" />
           <a href={`mailto:${data.site.siteMetadata.mail}`}>
             {data.site.siteMetadata.mail}

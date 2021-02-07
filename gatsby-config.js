@@ -9,6 +9,7 @@ module.exports = {
     author: `Paweł Słowik`,
   },
   plugins: [
+    "gatsby-plugin-postcss",
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-google-fonts-v2`,
