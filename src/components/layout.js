@@ -7,18 +7,25 @@
 
 import React from "react"
 import Navigation from "./Navigation/Navigation"
-import GlobalStyle from "../assets/styles/globalStyles"
-import Theme from "../assets/styles/mainTheme.js"
+import GlobalStyle from "../styles/styledComponents/globalStyles"
+import Theme from "../styles/styledComponents/mainTheme.js"
 import Footer from "./Footer/Footer"
+import PropTypes from "prop-types"
 
+const Layout = ({ logoOnLeftSite, isFooter, children }) => (
+  <Theme>
+    <GlobalStyle />
+    <Navigation logoOnLeftSite={logoOnLeftSite} />
+    <main className={logoOnLeftSite ? "px-24" : "p-24"}>{children}</main>
+    {isFooter && <Footer />}
+  </Theme>
+)
 
-const Layout = ({isFooter, children }) => (<Theme>
-  <GlobalStyle />
-  <Navigation />
-  <main>{children}</main>
-  {isFooter && <Footer/>}
-  
-</Theme>)
+Navigation.propTypes = {
+  logoOnLeftSite: PropTypes.bool,
+}
 
-
+Navigation.defaultProps = {
+  logoOnLeftSite: false,
+}
 export default Layout

@@ -4,8 +4,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Button from "../components/Button/Button"
-import envelopeIcon from "./../assets/icons/envelope-icon.svg"
-import phoneIcon from "./../assets/icons/phone-icon.svg"
+import NavContact from "../components/NavContact/NavContact"
 import SEO from "../components/seo"
 
 const Header = styled.header`
@@ -49,34 +48,10 @@ const Footer = styled.footer`
   width: 50%;
   height: 4rem;
   padding: 0;
-
-  ul {
-    display: flex;
-    justify-content: flex-start;
-  }
-  li {
-    list-style: none;
-    margin-right: 4rem;
-    display: flex;
-    align-items: center;
-
-    img {
-      width: 1.8rem;
-    }
-
-    a,
-    span {
-      font-size: 1.5rem;
-      margin-left: 1rem;
-      text-decoration: none;
-      color: ${({ theme }) => theme.color.black};
-      font-weight: ${({ theme }) => theme.fontWeight.bold};
-    }
-  }
 `
 
 const IndexPage = ({ data }) => (
-  <Layout>
+  <Layout logoOnLeftSite>
     <SEO title={data.site.siteMetadata.name} />
     <Header>
       <h1>{data.site.siteMetadata.title}</h1>
@@ -85,18 +60,7 @@ const IndexPage = ({ data }) => (
     </Header>
     <FrontImage fluid={data.file.childImageSharp.fluid}></FrontImage>
     <Footer>
-      <ul>
-        <li className={"bg-yellow-400"}>
-          <img src={envelopeIcon} alt="" />
-          <a href={`mailto:${data.site.siteMetadata.mail}`}>
-            {data.site.siteMetadata.mail}
-          </a>
-        </li>
-        <li>
-          <img src={phoneIcon} alt="" />
-          <span>{data.site.siteMetadata.phone}</span>
-        </li>
-      </ul>
+      <NavContact />
     </Footer>
   </Layout>
 )
@@ -107,15 +71,13 @@ export const query = graphql`
       siteMetadata {
         title
         description
-        phone
-        mail
         name
       }
     }
     file(name: { eq: "front-image" }) {
       childImageSharp {
         fluid(maxWidth: 800, quality: 90) {
-          ...GatsbyImageSharpFluid_noBase64
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

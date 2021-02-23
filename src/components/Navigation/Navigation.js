@@ -1,8 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 // import LogoConvex from './LogoConvex'
-import convexLogo from "./../../assets/icons/convex-logo.svg"
+import PropTypes from "prop-types"
+
+import NavLogo from "./../NavLogo/NavLogo"
 import styled from "styled-components"
+import NavContact from "./../NavContact/NavContact"
 
 const NavWrapper = styled.nav`
   position: absolute;
@@ -11,11 +14,7 @@ const NavWrapper = styled.nav`
   height: 8rem;
   display: flex;
   align-items: center;
-  /* justify-content: flex-start;
-  width:100%; */
   justify-content: space-between;
-  width: 50%;
-  padding: 0 0 0 6.5rem;
 
   a {
     text-decoration: none;
@@ -23,7 +22,6 @@ const NavWrapper = styled.nav`
     font-family: "Montserrat";
   }
 `
-
 const NavList = styled.ul`
   margin: 0;
   padding: 0;
@@ -33,25 +31,13 @@ const NavList = styled.ul`
 `
 
 const NavListItem = styled.li`
-  font-size: 15px;
-  margin-left: 32px;
+  font-size: 1.5rem;
+  margin-right: 3rem;
 `
 
-const Logo = styled.span`
-  width: 10rem;
-`
-
-const Image = styled.img`
-  width: 15rem;
-`
-
-const Navigation = () => (
-  <NavWrapper>
-    <Logo>
-      <Link to="/">
-        <Image src={convexLogo} alt="" />
-      </Link>
-    </Logo>
+const Navigation = ({ logoOnLeftSite }) => (
+  <NavWrapper className={logoOnLeftSite ? " pl-24 w-3/6" : "px-24 w-full"}>
+    {logoOnLeftSite && <NavLogo />}
     <NavList>
       <NavListItem>
         <Link to="/">strona główna</Link>
@@ -66,7 +52,21 @@ const Navigation = () => (
         <Link to="/kontakt">kontakt</Link>
       </NavListItem>
     </NavList>
+    {!logoOnLeftSite && (
+      <>
+        <NavLogo />
+        <NavContact />
+      </>
+    )}
   </NavWrapper>
 )
+
+Navigation.propTypes = {
+  logoOnLeftSite: PropTypes.bool,
+}
+
+Navigation.defaultProps = {
+  logoOnLeftSite: false,
+}
 
 export default Navigation

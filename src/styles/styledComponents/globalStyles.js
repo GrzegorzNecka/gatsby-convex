@@ -8,6 +8,13 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
+  html,a,p,li {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+
+
+
   *,
   *::before,
   *::after {
@@ -16,7 +23,8 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    padding: 8rem 6.5rem 0;
+    padding: 8rem 6rem 0;
+    padding: 8rem 0 0 0;
     font-family: 'Montserrat';
    
   }
@@ -27,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat';
   }
   
-  p {
+  p,h1 {
     font-size: 16px;
   }
   
