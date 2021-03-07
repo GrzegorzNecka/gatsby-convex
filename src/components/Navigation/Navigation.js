@@ -35,8 +35,12 @@ const NavListItem = styled.li`
   margin-right: 3rem;
 `
 
-const Navigation = ({ logoOnLeftSite }) => (
-  <NavWrapper className={logoOnLeftSite ? " pl-24 w-3/6" : "px-24 w-full"}>
+const Navigation = ({ logoOnLeftSite, bgGrey }) => (
+  <NavWrapper
+    className={`${logoOnLeftSite ? " pl-24 w-7/12" : "px-24 w-full"} ${
+      bgGrey ? "bg-gray-100" : "bg-white"
+    }`}
+  >
     {logoOnLeftSite && <NavLogo />}
     <NavList>
       <NavListItem>
@@ -63,10 +67,12 @@ const Navigation = ({ logoOnLeftSite }) => (
 
 Navigation.propTypes = {
   logoOnLeftSite: PropTypes.bool,
+  bgGrey: PropTypes.bool,
 }
 
 Navigation.defaultProps = {
   logoOnLeftSite: false,
+  bgGrey: false,
 }
 
 export default Navigation

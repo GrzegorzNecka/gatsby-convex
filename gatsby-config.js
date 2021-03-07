@@ -7,6 +7,8 @@ module.exports = {
     mail: `biuro@convex.com.pl`,
     phone: `505-099-655`,
     author: `Paweł Słowik`,
+    adres: `ul. Kantorowicka 400, 31-763 Kraków`,
+    czas_pracy: `Poniedziałek – Piątek – 6:00 – 14:00`,
   },
   plugins: [
     "gatsby-plugin-postcss",

@@ -77,11 +77,11 @@ export const query = graphql`
     file(name: { eq: "front-image" }) {
       childImageSharp {
         fluid(maxWidth: 800, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
   }
 `
-
+// ...GatsbyImageSharpFluid_withWebp_tracedSVG
 export default IndexPage

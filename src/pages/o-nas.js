@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const AboutPage = () => (
-  <Layout>
-    <SEO title="Page two" />
+  <Layout isFooter bgGrey>
+    <SEO title="o-nas" />
     <h1>o-nas</h1>
   </Layout>
 )

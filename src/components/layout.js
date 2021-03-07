@@ -12,20 +12,28 @@ import Theme from "../styles/styledComponents/mainTheme.js"
 import Footer from "./Footer/Footer"
 import PropTypes from "prop-types"
 
-const Layout = ({ logoOnLeftSite, isFooter, children }) => (
+const Layout = ({ logoOnLeftSite, isFooter, bgGrey, children }) => (
   <Theme>
     <GlobalStyle />
-    <Navigation logoOnLeftSite={logoOnLeftSite} />
-    <main className={logoOnLeftSite ? "px-24" : "p-24"}>{children}</main>
+    <Navigation bgGrey={bgGrey} logoOnLeftSite={logoOnLeftSite} />
+    <main
+      className={`${logoOnLeftSite ? " pl-24" : "px-24"} ${
+        bgGrey ? "bg-gray-100" : "bg-white"
+      }`}
+    >
+      {children}
+    </main>
     {isFooter && <Footer />}
   </Theme>
 )
 
 Navigation.propTypes = {
   logoOnLeftSite: PropTypes.bool,
+  bgGrey: PropTypes.bool,
 }
 
 Navigation.defaultProps = {
   logoOnLeftSite: false,
+  bgGrey: false,
 }
 export default Layout
