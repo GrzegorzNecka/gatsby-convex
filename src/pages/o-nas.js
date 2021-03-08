@@ -54,23 +54,12 @@ const AboutPage = ({ data }) => {
     allFile: { nodes },
   } = data
 
-  const abc = nodes.filter(node => {
-    // console.log(node.publicURL.endWith("o-nas-1.png"))
-    return node.publicURL.endsWith("o-nas-1.png")
-    // console.log(node.publicURL.endsWith("o-nas-1.png"))
-  })
-  console.log("🚀 ~ file: o-nas.js ~ line 62 ~ AboutPage ~ abc ", abc)
-  // console.log("🚀 ~ file: o-nas.js ~ line 56 ~ AboutPage ~ nodes", nodes)
-
   function findNode(text) {
-    const result = nodes.filter(node => {
+    return nodes.filter(node => {
       return node.publicURL.endsWith(text)
-    })
-
-    return result
+    })[0]
   }
 
-  console.log("🚀 ~ file: o-nas.js ~ line 62 ~ AboutPage ~ abc ", findNode())
   return (
     <Layout isFooter bgGrey>
       <SEO title="o-nas" />
@@ -84,9 +73,7 @@ const AboutPage = ({ data }) => {
         </ContentWrap>
         <ContentWrap>
           <CartoonOnCircle text="Kompleksowa produkcja opakowań kartonowych">
-            <ImageTop
-              fluid={findNode("o-nas-1.png")[0].childImageSharp.fluid}
-            />
+            <ImageTop fluid={findNode("o-nas-1.png").childImageSharp.fluid} />
           </CartoonOnCircle>
         </ContentWrap>
       </ArticleSection>
@@ -95,7 +82,7 @@ const AboutPage = ({ data }) => {
         <ContentWrap>
           <CartoonOnCircle text="">
             <ImageBottom
-              fluid={findNode("o-nas-2.png")[0].childImageSharp.fluid}
+              fluid={findNode("o-nas-2.png").childImageSharp.fluid}
             />
           </CartoonOnCircle>
         </ContentWrap>

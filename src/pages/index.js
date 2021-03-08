@@ -7,21 +7,29 @@ import Button from "../components/Button/Button"
 import NavContact from "../components/NavContact/NavContact"
 import SEO from "../components/seo"
 
-const Header = styled.header`
+const HeaderWrap = styled.div`
   width: 50%;
   height: calc(100vh - 8rem - 4rem);
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Header = styled.header`
   text-align: right;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  width: 70%;
+  /* background: pink; */
 
   h1 {
     font-size: ${({ theme }) => theme.fontSize.xxl};
     font-weight: ${({ theme }) => theme.fontWeight.black};
     margin: 0;
     padding: 0;
-    width: 50%;
     line-height: 1.1;
     margin: 0 0 4rem 0;
   }
@@ -53,11 +61,13 @@ const Footer = styled.footer`
 const IndexPage = ({ data }) => (
   <Layout logoOnLeftSite>
     <SEO title={data.site.siteMetadata.name} />
-    <Header>
-      <h1>{data.site.siteMetadata.title}</h1>
-      <p>{data.site.siteMetadata.description}</p>
-      <Button>SPRAWDŹ NASZĄ OFERTĘ</Button>
-    </Header>
+    <HeaderWrap>
+      <Header>
+        <h1>{data.site.siteMetadata.title}</h1>
+        <p>{data.site.siteMetadata.description}</p>
+        <Button>SPRAWDŹ NASZĄ OFERTĘ</Button>
+      </Header>
+    </HeaderWrap>
     <FrontImage fluid={data.file.childImageSharp.fluid} />
     <Footer>
       <NavContact />

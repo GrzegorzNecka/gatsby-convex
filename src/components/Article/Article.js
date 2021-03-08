@@ -13,12 +13,14 @@ const ArticletWrap = styled.div`
 const Header = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  line-height: 1.2;
 `
 
 const ArticleContent = styled.article`
   font-size: ${({ theme }) => theme.fontSize.s};
   text-align: justify;
   text-justify: inter-word;
+  line-height: 1.5;
 `
 const ArticleButton = styled(Button)`
   align-self: flex-end;
