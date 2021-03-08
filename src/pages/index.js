@@ -58,7 +58,7 @@ const IndexPage = ({ data }) => (
       <p>{data.site.siteMetadata.description}</p>
       <Button>SPRAWDŹ NASZĄ OFERTĘ</Button>
     </Header>
-    <FrontImage fluid={data.file.childImageSharp.fluid}></FrontImage>
+    <FrontImage fluid={data.file.childImageSharp.fluid} />
     <Footer>
       <NavContact />
     </Footer>

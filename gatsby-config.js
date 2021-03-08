@@ -19,7 +19,7 @@ module.exports = {
         fonts: [
           {
             family: "Montserrat",
-            variable: true,
+            // variable: true,
             weights: ["200..900"],
           },
         ],
