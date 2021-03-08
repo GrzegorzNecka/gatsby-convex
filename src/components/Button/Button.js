@@ -9,6 +9,7 @@ const Button = styled.button`
   font-weight: 600;
   flex-shrink: 0;
   letter-spacing: 0.3rem;
+  text-transform: uppercase;
 `
 
 export default Button

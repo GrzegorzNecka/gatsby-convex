@@ -69,7 +69,7 @@ const Footer = () => (
             <span> {data.site.siteMetadata.czas_pracy}</span>
           </Info>
         </FooterWrapper>
-        <Coopyright>
+        <Coopyright className={` pb-10  `}>
           Copyrigh © {new Date().getFullYear()}, Convex Opakowania
         </Coopyright>
       </footer>
