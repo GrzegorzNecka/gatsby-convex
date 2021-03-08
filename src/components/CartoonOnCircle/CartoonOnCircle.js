@@ -1,7 +1,7 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import styled, { css } from "styled-components"
-import Img from "gatsby-image"
+// import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+// import Img from "gatsby-image"
 
 const CircleWrap = styled.div`
   background: white;
@@ -14,21 +14,21 @@ const CircleWrap = styled.div`
   position: relative;
 `
 
-const ImageOnWhite = styled(Img)`
-  height: auto;
-  width: 40rem;
-  position: absolute !important;
-  left: 25%;
-  top: 22%;
+// const ImageOnWhite = styled(Img)`
+//   height: auto;
+//   width: 40rem;
+//   position: absolute !important;
+//   left: 25%;
+//   top: 22%;
 
-  ${props =>
-    props.addStyles &&
-    css`
-      left: 20%;
-      top: 10%;
-      width: 30rem;
-    `}
-`
+//   ${props =>
+//     props.addStyles &&
+//     css`
+//       left: 20%;
+//       top: 10%;
+//       width: 30rem;
+//     `}
+// `
 
 const TextImage = styled.div`
   position: absolute;
@@ -51,36 +51,33 @@ const TextImage = styled.div`
   }
 `
 
-const CartoonOnCircle = ({ text, nodeNumber, addStyles }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      allFile(filter: { absolutePath: { regex: "/images/o-nas/" } }) {
-        nodes {
-          publicURL
-          childImageSharp {
-            fluid(maxWidth: 300, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
-          }
-        }
-      }
-    }
-  `)
+const CartoonOnCircle = ({ text, children }) => {
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     allFile(filter: { absolutePath: { regex: "/images/o-nas/" } }) {
+  //       nodes {
+  //         publicURL
+  //         childImageSharp {
+  //           fluid(maxWidth: 300, quality: 100) {
+  //             ...GatsbyImageSharpFluid_withWebp_noBase64
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  const {
-    allFile: { nodes },
-  } = data
-  console.log(
-    "🚀 ~ file: CartoonOnCircle.js ~ line 65 ~ CartoonOnCircle ~ data",
-    data
-  )
+  // const {
+  //   allFile: { nodes },
+  // } = data
+  // console.log(
+  //   "🚀 ~ file: CartoonOnCircle.js ~ line 65 ~ CartoonOnCircle ~ data",
+  //   data
+  // )
 
   return (
     <CircleWrap>
-      <ImageOnWhite
-        addStyles={addStyles}
-        fluid={nodes[nodeNumber].childImageSharp.fluid}
-      />
+      {children}
       <TextImage>
         <b>{text}</b>
       </TextImage>
