@@ -114,4 +114,45 @@ export const query = graphql`
   }
 `
 
+// to będzie lepsze
+
+// export const queryPicture = graphql`
+//   {
+//     allFile(filter: { publicURL: { regex: "/o-nas/" } }) {
+//       edges {
+//         node {
+//           name
+//           childImageSharp {
+//             fluid {
+//               ...GatsbyImageSharpFluid_withWebp_noBase64
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
+
+// to jest jeszcze lepsze
+// export const queryPicture = graphql`
+//   {
+//   picture1: file(publicURL: {regex: "/o-nas-1/"}) {
+//     name
+//     childImageSharp {
+//       fluid {
+//         base64
+//       }
+//     }
+//   }
+//   picture2: file(publicURL: {regex: "/o-nas-2/"}) {
+//     name
+//         childImageSharp {
+//       fluid {
+//         base64
+//       }
+//     }
+//   }
+// }
+// `
+
 export default AboutPage
