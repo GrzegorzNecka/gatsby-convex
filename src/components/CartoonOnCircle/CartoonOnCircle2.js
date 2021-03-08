@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import Img from "gatsby-image"
 
 const CircleWrap = styled.div`
@@ -20,14 +20,6 @@ const ImageOnWhite = styled(Img)`
   position: absolute !important;
   left: 25%;
   top: 22%;
-
-  ${props =>
-    props.addStyles &&
-    css`
-      left: 20%;
-      top: 10%;
-      width: 30rem;
-    `}
 `
 
 const TextImage = styled.div`
@@ -51,7 +43,7 @@ const TextImage = styled.div`
   }
 `
 
-const CartoonOnCircle = ({ text, nodeNumber, addStyles }) => {
+const CartoonOnCircle = ({ text, nodeNumber }) => {
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { absolutePath: { regex: "/images/o-nas/" } }) {
@@ -77,10 +69,7 @@ const CartoonOnCircle = ({ text, nodeNumber, addStyles }) => {
 
   return (
     <CircleWrap>
-      <ImageOnWhite
-        addStyles={addStyles}
-        fluid={nodes[nodeNumber].childImageSharp.fluid}
-      />
+      <ImageOnWhite fluid={nodes[nodeNumber].childImageSharp.fluid} />
       <TextImage>
         <b>{text}</b>
       </TextImage>
