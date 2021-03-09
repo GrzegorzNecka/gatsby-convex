@@ -43,33 +43,35 @@ const TextImage = styled.div`
   }
 `
 
-const CartoonOnCircle = ({ text, nodeNumber }) => {
+const CartoonOnCircle = ({ text, dataName }) => {
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { absolutePath: { regex: "/images/o-nas/" } }) {
-        nodes {
-          publicURL
-          childImageSharp {
-            fluid(maxWidth: 300, quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-            }
+      oNas1: file(publicURL: { regex: "/o-nas-1/" }) {
+        name
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
+          }
+        }
+      }
+      oNas2: file(publicURL: { regex: "/o-nas-2/" }) {
+        name
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }
     }
   `)
 
-  const {
-    allFile: { nodes },
-  } = data
-  console.log(
-    "🚀 ~ file: CartoonOnCircle.js ~ line 65 ~ CartoonOnCircle ~ data",
-    data
-  )
+  const { oNas1, oNas2 } = data
+
+  //dataName ==== np. oNas1
 
   return (
     <CircleWrap>
-      <ImageOnWhite fluid={nodes[nodeNumber].childImageSharp.fluid} />
+      <ImageOnWhite fluid={dataName.childImageSharp.fluid} />
       <TextImage>
         <b>{text}</b>
       </TextImage>
