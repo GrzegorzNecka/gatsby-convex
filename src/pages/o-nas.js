@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 // import Button from "../components/Button/Button"
 import CartoonOnCircle from "../components/CartoonOnCircle/CartoonOnCircle"
 import Article from "../components/Article/Article"
+
 // const ArticleImage = styled(Img)`
 //   width: 25rem;
 //   height: auto;
@@ -50,15 +51,7 @@ const ImageBottom = styled(ImageTop)`
 `
 
 const AboutPage = ({ data }) => {
-  const {
-    allFile: { nodes },
-  } = data
-
-  function findNode(text) {
-    return nodes.filter(node => {
-      return node.publicURL.endsWith(text)
-    })[0]
-  }
+  const { picture1, picture2 } = data
 
   return (
     <Layout isFooter bgGrey>
@@ -73,7 +66,7 @@ const AboutPage = ({ data }) => {
         </ContentWrap>
         <ContentWrap>
           <CartoonOnCircle text="Kompleksowa produkcja opakowań kartonowych">
-            <ImageTop fluid={findNode("o-nas-1.png").childImageSharp.fluid} />
+            <ImageTop fluid={picture1.childImageSharp.fluid} />
           </CartoonOnCircle>
         </ContentWrap>
       </ArticleSection>
@@ -81,9 +74,7 @@ const AboutPage = ({ data }) => {
       <ArticleSection className="pt-40 pb-40">
         <ContentWrap>
           <CartoonOnCircle text="">
-            <ImageBottom
-              fluid={findNode("o-nas-2.png").childImageSharp.fluid}
-            />
+            <ImageBottom fluid={picture2.childImageSharp.fluid} />
           </CartoonOnCircle>
         </ContentWrap>
 
@@ -99,60 +90,26 @@ const AboutPage = ({ data }) => {
   )
 }
 
+// to jest jeszcze lepsze
 export const query = graphql`
   {
-    allFile(filter: { absolutePath: { regex: "/images/o-nas/" } }) {
-      nodes {
-        publicURL
-        childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
+    picture1: file(publicURL: { regex: "/o-nas-1/" }) {
+      name
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+    picture2: file(publicURL: { regex: "/o-nas-2/" }) {
+      name
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
   }
 `
-
-// to będzie lepsze
-
-// export const queryPicture = graphql`
-//   {
-//     allFile(filter: { publicURL: { regex: "/o-nas/" } }) {
-//       edges {
-//         node {
-//           name
-//           childImageSharp {
-//             fluid {
-//               ...GatsbyImageSharpFluid_withWebp_noBase64
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
-
-// to jest jeszcze lepsze
-// export const queryPicture = graphql`
-//   {
-//   picture1: file(publicURL: {regex: "/o-nas-1/"}) {
-//     name
-//     childImageSharp {
-//       fluid {
-//         base64
-//       }
-//     }
-//   }
-//   picture2: file(publicURL: {regex: "/o-nas-2/"}) {
-//     name
-//         childImageSharp {
-//       fluid {
-//         base64
-//       }
-//     }
-//   }
-// }
-// `
 
 export default AboutPage
