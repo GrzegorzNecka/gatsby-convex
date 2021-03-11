@@ -16,13 +16,15 @@ const Layout = ({ logoOnLeftSite, isFooter, bgGrey, children }) => (
   <Theme>
     <GlobalStyle />
     <Navigation bgGrey={bgGrey} logoOnLeftSite={logoOnLeftSite} />
-    <main
-      className={`${logoOnLeftSite ? " pl-24" : "px-24"} ${
-        bgGrey ? "bg-gray-100" : "bg-white"
-      }`}
-    >
-      {children}
-    </main>
+    <div className={` ${bgGrey ? "bg-gray-100" : "bg-white "}`}>
+      <main
+        className={`${
+          logoOnLeftSite ? " pl-24" : "px-24 max-w-screen-2xl mx-auto my-0"
+        } ${bgGrey ? "bg-gray-100" : "bg-white "}`}
+      >
+        {children}
+      </main>
+    </div>
     {isFooter && <Footer />}
   </Theme>
 )

@@ -47,7 +47,7 @@ const Footer = () => (
   <StaticQuery
     query={query}
     render={data => (
-      <footer className={` px-24  bg-white text-xl`}>
+      <footer className={` px-24  pb-10  bg-white text-xl`}>
         <FooterWrapper className={`py-7 font-semibold`}>
           <Address>
             <ul>
@@ -69,7 +69,7 @@ const Footer = () => (
             <span> {data.site.siteMetadata.czas_pracy}</span>
           </Info>
         </FooterWrapper>
-        <Coopyright className={` pb-10  `}>
+        <Coopyright>
           Copyrigh © {new Date().getFullYear()}, Convex Opakowania
         </Coopyright>
       </footer>

@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 8rem 6rem 0;
     padding: 8rem 0 0 0;
     font-family: 'Montserrat';
-   
+      
   }
 
   button {

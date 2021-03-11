@@ -37,7 +37,7 @@ const NavListItem = styled.li`
 
 const Navigation = ({ logoOnLeftSite, bgGrey }) => (
   <NavWrapper
-    className={`${logoOnLeftSite ? " pl-24 w-7/12" : "px-24 w-full"} ${
+    className={`${logoOnLeftSite ? " pl-24 w-7/12" : "px-24 w-full  "} ${
       bgGrey ? "bg-gray-100" : "bg-white"
     }`}
   >
