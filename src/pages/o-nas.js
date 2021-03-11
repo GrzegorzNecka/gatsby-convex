@@ -21,7 +21,7 @@ const ContentWrap = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  /* padding: 4rem; */
+  padding: 4rem;
 `
 
 const ImageTop = styled(Img)`
@@ -32,12 +32,25 @@ const ImageTop = styled(Img)`
   top: 22%;
 `
 
+// const ImageBottom = styled(Img)`
+//   width: 50%;
+//   position: absolute !important;
+//   left: 50%;
+//   top: 10rem;
+//   height: calc(100% - 20rem);
+
+//   & img {
+//     object-position: right center !important;
+//   }
+// `
+
 const ImageBottom = styled(Img)`
-  width: calc(50% - 5rem);
+  width: calc(50% - 4rem);
   position: absolute !important;
-  left: calc(50% + 5rem);
-  top: 10rem;
-  height: calc(100% - 20rem);
+  left: calc(50% + 4rem);
+  top: 50%;
+  height: calc(100% - 44rem);
+  transform: translateY(-50%);
 
   & img {
     object-position: right center !important;
