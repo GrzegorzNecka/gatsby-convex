@@ -6,7 +6,7 @@ const Button = styled.button`
   padding: 10px 25px;
   color: ${({ theme }) => theme.color.black};
   font-size: 13px;
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.fontWeight.bold2};
   flex-shrink: 0;
   letter-spacing: 0.3rem;
   text-transform: uppercase;

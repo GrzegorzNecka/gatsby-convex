@@ -12,7 +12,6 @@ const ArticleSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 `
 
 const ContentWrap = styled.div`
@@ -21,30 +20,24 @@ const ContentWrap = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  /* padding: 4rem; */
+  padding: 4rem;
 `
 
 const ImageTop = styled(Img)`
   height: auto;
-  width: 30rem;
+  width: 40rem;
   position: absolute !important;
-  left: 13%;
+  left: 25%;
   top: 22%;
 `
 
-const ImageBottom = styled(Img)`
-  width: calc(50% - 5rem);
-  position: absolute !important;
-  left: calc(50% + 5rem);
-  top: 10rem;
-  height: calc(100% - 20rem);
-
-  & img {
-    object-position: right center !important;
-  }
+const ImageBottom = styled(ImageTop)`
+  left: 20%;
+  top: 10%;
+  width: 30rem;
 `
 
-const AboutPage = ({ data }) => {
+const AboutBusiness = ({ data }) => {
   const { picture1, picture2, textContent1, textContent2 } = data
 
   return (
@@ -56,12 +49,12 @@ const AboutPage = ({ data }) => {
           <Article
             header={textContent1.frontmatter.header}
             articleText={<MDXRenderer>{textContent1.body}</MDXRenderer>}
-            buttonText="znajdź nas"
+            buttonText="przejdź do oferty"
           />
         </ContentWrap>
 
         <ContentWrap>
-          <CartoonOnCircle text="Poznaj firmę Convex">
+          <CartoonOnCircle text="Kompleksowa produkcja opakowań kartonowych">
             <ImageTop fluid={picture1.childImageSharp.fluid} />
           </CartoonOnCircle>
         </ContentWrap>
@@ -69,13 +62,18 @@ const AboutPage = ({ data }) => {
 
       <ArticleSection className="pt-40 pb-40">
         <ContentWrap>
+          <CartoonOnCircle text="">
+            <ImageBottom fluid={picture2.childImageSharp.fluid} />
+          </CartoonOnCircle>
+        </ContentWrap>
+
+        <ContentWrap>
           <Article
             header={textContent2.frontmatter.header}
             articleText={<MDXRenderer>{textContent2.body}</MDXRenderer>}
-            buttonText="przejdź do oferty"
+            buttonText="napisz do nas"
           />
         </ContentWrap>
-        <ImageBottom fluid={picture2.childImageSharp.fluid} />
       </ArticleSection>
     </Layout>
   )
@@ -83,13 +81,7 @@ const AboutPage = ({ data }) => {
 
 export const query = graphql`
   {
-    textContent1: mdx(frontmatter: { title: { regex: "/o-nas-top/" } }) {
-      frontmatter {
-        header
-      }
-      body
-    }
-    picture1: file(publicURL: { regex: "/o-nas-cartoon-1/" }) {
+    picture1: file(publicURL: { regex: "/o-firmie-1/" }) {
       name
       childImageSharp {
         fluid {
@@ -97,21 +89,27 @@ export const query = graphql`
         }
       }
     }
-    textContent2: mdx(frontmatter: { title: { regex: "/o-nas-bottom/" } }) {
-      frontmatter {
-        header
-      }
-      body
-    }
-    picture2: file(publicURL: { regex: "/o-nas-fabric-1/" }) {
+    picture2: file(publicURL: { regex: "/o-firmie-2/" }) {
       name
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
+    }
+    textContent1: mdx(frontmatter: { title: { regex: "/o-firmie-1/" } }) {
+      frontmatter {
+        header
+      }
+      body
+    }
+    textContent2: mdx(frontmatter: { title: { regex: "/o-firmie-2/" } }) {
+      frontmatter {
+        header
+      }
+      body
     }
   }
 `
 
-export default AboutPage
+export default AboutBusiness

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
+import { Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Button from "../components/Button/Button"
@@ -65,7 +66,9 @@ const IndexPage = ({ data }) => (
       <Header>
         <h1>{data.site.siteMetadata.title}</h1>
         <p>{data.site.siteMetadata.description}</p>
-        <Button>SPRAWDŹ NASZĄ OFERTĘ</Button>
+        <Link to="/o-firmie">
+          <Button>SPRAWDŹ NASZĄ FIRMĘ</Button>
+        </Link>
       </Header>
     </HeaderWrap>
     <FrontImage fluid={data.file.childImageSharp.fluid} />

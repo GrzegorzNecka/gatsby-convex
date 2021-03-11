@@ -19,6 +19,7 @@ const theme = {
     light: 300,
     medium: 400,
     bold: 600,
+    bold2: 700,
     black: 800,
   },
   fontSize: {
